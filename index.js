@@ -12,6 +12,7 @@ const app = express();
 
 const courses = require('./routes/courses')
 const home = require('./routes/home')
+const postyear = require('./routes/postyear')
 
 app.set('view engine','pug');
 // optional
@@ -27,8 +28,12 @@ app.use(express.static('public'));
 app.use(helmet());
 app.use(logger);
 app.use(authentication);
+
+
 app.use('/api/courses',courses);
 app.use('/',home);
+app.use('/api/posts',postyear);
+
 //configuration
 console.log('Application Name: '+ config.get('name'));
 console.log('Mail Server: '+ config.get('mail.host'));
